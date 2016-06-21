@@ -1,0 +1,46 @@
+include common/_head
+body.login-page
+	header.login-header
+		button.login-button Авторизоваться
+	.login-block-holder
+		.login-card-flip
+			.login-card-wrapper
+				.login-card__front
+					+userBlock("Личный сайт веб разработчика", "Махиборода Екатерина")
+					+socialsBlock
+					ul.user-pages
+						- var user_pages = {"Мои работы":"works.html", "Обо мне":"about.html", "Блог":"blog.html" }
+							each  page_link, page_name in user_pages
+								li.user-pages__item
+									a(class="user-pages__link" href=page_link )=page_name
+				.login-card__back 
+					h2.login-card__title Авторизуйтесь
+					form.login-form(name="login-form", method="post")
+						div.login-form-input
+							span(class="fa fa-user")
+							input(type="text", name="login" placeholder="Логин")
+						div.login-form-input
+							span(class="fa fa-key")
+							input(type="password", name="password" placeholder="Пароль")
+						div.login-form-check
+							input.form-input__check(type="checkbox" id="check")
+							label.form-label__check(for="check") Я человек
+								
+						p Вы точно не робот?
+						div.login-form-radio
+							div.form-radio-item
+								input.form-input__radio(type="radio" name="robot" id="yes")
+								label.form-label__radio(for="yes") Да
+							div.form-radio-item
+								input.form-input__radio(type="radio" name="robot" id="not-sure")
+								label.form-label__radio(for="not-sure") Не уверен
+					ul.user-pages
+						li.user-pages__item
+							button(class="user-pages__link user-pages__home") На главную
+						li.user-pages__item
+							button(class="user-pages__link user-pages__login") Войти
+	footer.login-footer
+		.footer-wrapper
+			span.copy &copy; Махиборода Екатерина
+			span создано с любовью в LoftSchool
+			span.year 2016

@@ -1,0 +1,37 @@
+mixin userBlock(title, name)
+	.user-block
+		.user__avatar
+			img(src="source/images/avatar.jpg", title=title, alt=name)
+		.user__name=name 
+		.user__position=title
+
+mixin socialsBlock()
+	ul.social-links
+		- var socialLinks = { "vk" : "https://vk.com/ketik_k", "github-alt" : "https://github.com/kateryna06", "linkedin" : "https://www.linkedin.com/in/kateryna-makhiboroda-88a83655"}
+		each link_url, link_name in socialLinks
+			li.social__item
+				a(href=link_url, class="social__link" + " fa fa-"+link_name)
+
+mixin MainMenu(active_link)
+	ul.main-menu
+		- var mainmenu = {"Мои работы" : "works.html", "Блог" : "blog.html", "Обо мне" : "about.html", "Авторизация" : "index.html"};
+		- var activeLink = 1;
+		each menu_url, menu_link_name in mainmenu
+			li.main-menu__item
+				a(href=menu_url, class="main-menu__link" + ((activeLink++ == active_link) ? " active" : ""))=menu_link_name
+
+
+mixin title-svg(text, svg_id)
+	.svg-title
+		.svg-title-holder
+			h2.svg-title__text= text
+			svg.svg-title__img
+				use(xlink:href="#icon-"+svg_id)
+
+mixin skillSVG(skill_name, skill_percent)
+	div.skill__name= skill_name
+	div.skill__count
+		svg(width="110", height="110" class="g-circle")
+			circle(class="circle" r="45" cx="55" cy="55" transform="rotate(-90 55 55)")
+			circle(class="sector" r="45" cx="55" cy="55" transform="rotate(-90 55 55)" stroke-dasharray="282" stroke-dashoffset=(((100-skill_percent)*282)/100) )
+

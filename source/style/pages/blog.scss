@@ -1,0 +1,15 @@
+.blog-page{
+	.header{
+		text-align: center;
+		.title-border{
+			color: $white;
+			font-size: 63px;
+			&:before{
+				background: $white;
+			}
+		}
+		p{
+			color: $white;
+		}
+	}
+}

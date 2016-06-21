@@ -1,0 +1,20 @@
+footer.footer
+	div.footer-up-btn
+		button.up(class="fa fa-chevron-up")
+	.footer-info
+		.footer-column
+			p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. 
+		.footer-column
+			ul.footer-menu
+				- var fotermenu = {"Мои работы" : "works.html", "Блог" : "blog.html", "Обо мне" : "about.html", "Авторизация" : "index.html"};
+					each footer_url, footer_link_name in fotermenu
+						li.footer-menu__item
+							a(href=footer_url, class="footer-menu__link")=footer_link_name
+			+socialsBlock
+		.footer-column
+			blockquote.footer-quote Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает, где вы живете.
+			p.footer-quote-author — Martin Golding
+	.footer-copyright
+		span.copy &copy; Махиборода Екатерина
+		span создано с любовью в LoftSchool
+		span.year 2016

@@ -1,0 +1,83 @@
+include common/_head
+body
+	include common/_sprite
+	nav#page-menu
+		+MainMenu(3)
+	header.header
+		.header-top
+			.menu-holder
+				+socialsBlock
+				button.toogle-menu
+					div.menu-btn
+		.header-user-info
+			.header-user-holder
+				+userBlock("Личный сайт веб разработчика", "Махиборода Екатерина")
+				svg(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 2032 360" preserveaspectratio="none" class="triangle")
+					polygon(points="12032,360.368 2032,0 1016,173 0,0 0,360.368")
+			.header-btn
+				button.bottom(class="fa fa-chevron-down")
+	section.about-me
+		.about-me-wrapper
+			.left-column
+				+title-svg("Обо мне", "about_header")
+				.my-photo
+					img(src="source/images/avatar.jpg", alt="")
+				.my-info
+					h3.title-border Кто я
+					p Меня зовут Катя и мне 29 лет. Я из Украины, но добрые клиенты переманили меня на Кипр
+					p Заполню как будет время
+			.right-column
+				h3.title-border Чем я могу быть вам полезен
+				p Больше всего меня привлекет Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
+				.skills-section
+					h4.skill__title Frontend
+					div.skill__item
+						+skillSVG("HTML", 90) 
+					div.skill__item
+						+skillSVG("CSS3", 50)
+					div.skill__item
+						+skillSVG("JavaScript & jQuery", 50)
+				.skills-section
+					h4.skill__title Backend
+					div.skill__item
+						+skillSVG("PHP", 10) 
+					div.skill__item
+						+skillSVG("mySQL", 20)
+					div.skill__item
+						+skillSVG("Node.js & npm", 30)
+					div.skill__item
+						+skillSVG("Mongo.db", 30)
+				.skills-section
+					h4.skill__title WorkFlow
+					div.skill__item
+						+skillSVG("Git", 80) 
+					div.skill__item
+						+skillSVG("Gulp", 70)
+					div.skill__item
+						+skillSVG("Bower", 60)
+	.map-hodler
+		#map
+		.map-pin
+			h4.title-border Контакты
+			ul.contact-info
+				li.contact-item
+					a(href="mahiboroda.ekaterina") 
+						span 
+							i(class="fa fa-skype")
+						| skype_kdn
+				li.contact-item
+					a(href="mailto:hency87@gmail.com") 
+						span
+							i(class="fa fa-envelope")
+						| hency87@gmail.com
+				li.contact-item
+					a(href="+35797638041") 
+						span
+							i(class="fa fa-phone")
+						| +35797638041
+				li.contact-item
+					a(href="+35797638041") 
+						span
+							i(class="fa fa-map-marker")
+						| Cyprus, Limassol
+		include common/_footer

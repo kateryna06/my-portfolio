@@ -1,0 +1,246 @@
+/*************************************
+      SLIDER
+*************************************/
+.slider{
+	height: 100vh;
+	min-height: 650px;
+	background: #f8f9f5;
+}
+.slider-left{
+	background: #f0efe9;
+	float: left;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+ 		.slider-description{
+ 			display: table;
+ 			height: 100%;
+ 			width: 100%;
+ 		}
+ 		.slider-description-content{
+ 			@extend %tableCell;
+ 		}
+		.work-info{
+			padding: 0 100px;
+			text-align: center;
+		}
+		.slider__work__title{
+			position: relative;
+			font-size: 35px;
+			text-transform: uppercase;
+			margin: 0 0 45px;
+			color: $gray;
+			&:after{
+				@include titleBorder();
+			}
+		}
+		.slider__tech{
+			color: $green;
+			text-transform: uppercase;
+			margin: 0;
+			padding: 0 0 57px;
+		}
+		.slider__btn{
+			background: #6c9c5a;
+			color: $white;
+			display: inline-block;
+			padding: 13px 20px 13px 50px;
+			border-radius: 20px;
+			position: relative;
+				&:hover{
+					background: $green;
+				}
+				&:before{
+					content: "\f0c1";
+					font-family: "FontAwesome";
+					font-size: 22px;
+					position: absolute;
+					top: 12px;
+					left: 17px;
+				}
+		}
+}
+.slider-right{
+	background: #e1e4d7;
+    float: right;
+    width: 50%;
+    height: 70%;
+    position: relative;
+    	.project-preview{
+    		display: table;
+    		width: 100%;
+    		height: 100%;
+    	}
+    	.project-preview__img{
+    		@extend %tableCell;
+    		text-align: center;
+    	}
+}
+.slider-slide-bottom{
+	height: 30%;
+	float: right;
+	width: 50%;
+		.slider-item{
+			width: 50%;
+			float: left;
+			height: 100%;
+			text-align: center;
+			position: relative;
+		}
+		.work-preview{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			text-align: center;
+			img{
+				max-width: 100%;
+			}
+		}
+		.slider-btn{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: background .5s;
+				&__prev{
+					background: rgba(#c6cbc2, 0.8);
+						&:hover{
+							background: rgba(#c6cbc2, 0.5);
+						}
+				}
+				&__next{
+					background: rgba(#aeb2aa, 0.8);
+						&:hover{
+							background: rgba(#aeb2aa, 0.5);
+						}
+				}
+				&:before{
+					color: $white;
+					font-family: "FontAwesome";
+					font-size: 48px;
+				}
+				&__prev:before{
+					content: "\f078";
+				}
+				&__next:before{
+					content: "\f077";
+				}
+		}
+}
+
+/*************************************
+      QUOTES BLOCK
+*************************************/
+.about-block{
+	background: url(../images/work/work-bg.png) 50% 100% no-repeat;
+	background-size: cover;
+	width: 100%;
+	overflow: hidden;
+}
+.about-quotes{
+	width: 60%;
+	overflow: hidden;
+	margin: 0 auto;
+		.about-quotes-column{
+			float: left;
+			width: 48%;
+			text-align: center;
+			margin: 0 1%;
+			font-style: italic;
+		}
+		.quote-avatar{
+			overflow: hidden;
+			width: 77px;
+			height: 77px;
+			border-radius: 50%;
+			margin: 0 auto;
+		}
+		.quote-text{
+			margin: 17px 0 0;
+			color: #5d5a55;
+			line-height: 26px;
+			text-align: left;
+			position: relative;
+			&:before{
+				content: '';
+				position: absolute;
+				top: -22px;
+				left: 0;
+				background: url(../images/work/quote.png) 0 0 no-repeat;
+				width: 75px;
+				height: 61px;
+			}
+		}
+		.quote-author{
+			color: $green;
+			font-weight: bold;
+			margin: 20px 0 0 0;
+			padding: 0 0 6px;
+		}
+}
+/*************************************
+     CONTACT FORM
+*************************************/
+.contact-form-holder{
+	width: 28%;
+	margin: 70px auto 0;
+	padding: 32px 0 0 0;
+	border-radius: 4px;
+	background: rgba(#dadbd6, 0.6);
+	overflow: hidden;
+		.contact-form-title{
+			margin: 0;
+			position: relative;
+			text-align: center;
+			text-transform: uppercase;
+			font-size: 35px;
+			color: $gray;
+			margin: 0 0 52px;
+			padding: 0 20px;
+			&:after{
+				@include titleBorder();
+			}
+		}
+		.row{
+			padding: 0 20px;
+			margin: 0 0 20px;
+			&__btn{
+				padding: 0;
+				overflow: hidden;
+			}
+				textarea,
+				input{
+					width: 100%;
+					box-sizing: border-box;
+					background: #f9f9f9;
+					border-radius: 20px;
+					color: #5d5a55;
+					padding: 13px 14px;
+					cursor: auto;
+				}
+				textarea{
+					resize: none;
+					height: 140px;
+				}
+		}
+		.btn-holder{
+			width: 50%;
+			float: left;
+			text-align: center;
+			box-sizing: border-box;
+				&:first-child{
+					border-right: 2px solid #aec5aa;
+				}
+			button{
+				background: #6c9c5a;
+				width: 100%;
+				color: $white;
+				padding: 13px 0;
+				&:hover{
+					background: #659652;
+				}
+			}
+		}
+}
