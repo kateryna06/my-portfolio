@@ -1,6 +1,19 @@
 /*************************************
       ABOUT BLOCK
 *************************************/
+.right-corner,
+.left-corner{
+	fill: #ebefe2;
+	position: absolute;
+	left: 0;
+	width: 50%;
+	bottom: -134px;
+}
+.right-corner{
+	fill: #f4f5f0;
+	right: 0;
+	left: auto;
+}
 .about-me{
 	clear: left;
     float: left;

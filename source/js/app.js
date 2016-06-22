@@ -28,6 +28,17 @@
 		return false;
 	});
 
+
+	/*STICKY MENU*/
+    $(window).scroll(function() {
+        if($(window).scrollTop() > 650){
+        	$('body').addClass('sticky');
+        } else{
+        	if($('body').hasClass('sticky')){
+        		$('body').removeClass('sticky');
+        	}
+        }
+    });
 	/*GOOGLE MAP*/
 	google.maps.event.addDomListener(window, 'load', init);
         
