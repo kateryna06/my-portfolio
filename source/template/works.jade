@@ -1,44 +1,49 @@
 include common/_head
 body
 	include common/_sprite
-	nav#page-menu
-		+MainMenu(1)
-	header.header
-		.header-top
-			.menu-holder
-				+socialsBlock
-				button.toogle-menu
-					div.menu-btn
-		.header-user-info
-			.header-user-holder
-				+userBlock("Личный сайт веб разработчика", "Махиборода Екатерина")
-				svg(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 2032 360" preserveaspectratio="none" class="triangle")
-					polygon(points="12032,360.368 2032,0 1016,173 0,0 0,360.368")
+	.header-holder
+		nav#page-menu
+			+MainMenu(1)
+		header.header
+			+parallaxBG
+			.header-top
+				.menu-holder
+					+socialsBlock
+					button.toogle-menu
+						div.menu-btn
+			.login-block-holder
+				.header-user-info
+					.header-user-holder
+						svg.svg-main__img
+							use(xlink:href="#icon-portfolio_header")
+						+userBlock("Личный сайт веб разработчика", "Махиборода Екатерина")
+			svg(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 2032 360" preserveaspectratio="none" class="triangle")
+				polygon(points="12032,360.368 2032,0 1016,173 0,0 0,360.368")
 			.header-btn
-				button.bottom(class="fa fa-chevron-down")
-			
+				a(href="#my-work").bottom(class="fa fa-chevron-down")
 	section.slider
 		+title-svg("Мои работы", "works_header")
-		div.slider-right
-			.project-preview
-				.project-preview__img
-					img(src="source/images/work/project-preview.png")
-		div.slider-left
-			div.slider-description
-				div.slider-description-content
-					div.work-info
-						h3.slider__work__title Сайт школы онлайн Образования
-						p.slider__tech HTML , CSS, JAVASCRIPT
-						a(href="" class="slider__btn") Посмотреть сайт
-		div.slider-slide-bottom
-			div.slider-item__prev(class="slider-item")
-				button.slider-btn__prev(class="slider-btn")
-				.work-preview
-					img(src="source/images/work/work-preview-1.jpg")
-			div.slider-item__next(class="slider-item")
-				button.slider-btn__next(class="slider-btn")
-				.work-preview
-					img(src="source/images/work/work-preview-2.jpg")
+		.slider-holder(id="my-work")
+			div.slider-right
+				.project-preview
+					.project-preview__img
+						img(src="source/images/work/project-preview.png")
+			div.slider-left
+				div.slider-description
+					div.slider-description-content
+						div.work-info
+							h3.slider__work__title Сайт школы онлайн Образования
+							p.slider__tech HTML , CSS, JAVASCRIPT
+							a(href="" class="slider__btn") Посмотреть сайт
+			div.slider-slide-bottom
+				div.slider-item__prev(class="slider-item")
+					button.slider-btn__prev(class="slider-btn")
+					.work-preview
+						img(src="source/images/work/work-preview-1.jpg")
+				div.slider-item__next(class="slider-item")
+					button.slider-btn__next(class="slider-btn")
+					.work-preview
+						img(src="source/images/work/work-preview-2.jpg")
 	section.about-block
 		+title-svg("Что обо мне говорят", "about_header")
 		.about-quotes
@@ -68,4 +73,7 @@ body
 						button.submit Отправить
 					.btn-holder
 						button.clear Очистить
-		include common/_footer
+		footer.footer
+			div.footer-up-btn
+				button.up(class="fa fa-chevron-up")
+			include common/_footer

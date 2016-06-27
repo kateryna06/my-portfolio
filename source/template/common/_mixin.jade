@@ -35,3 +35,6 @@ mixin skillSVG(skill_name, skill_percent)
 			circle(class="circle" r="45" cx="55" cy="55" transform="rotate(-90 55 55)")
 			circle(class="sector" r="45" cx="55" cy="55" transform="rotate(-90 55 55)" stroke-dasharray="282" stroke-dashoffset=(((100-skill_percent)*282)/100) )
 
+mixin parallaxBG 
+	.parallax-bg
+		img(src="source/images/forest-bg.jpg", alt="")

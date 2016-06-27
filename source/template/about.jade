@@ -1,24 +1,29 @@
 include common/_head
 body
 	include common/_sprite
-	nav#page-menu
-		+MainMenu(3)
-	header.header
-		.header-top
-			.menu-holder
-				+socialsBlock
-				button.toogle-menu
-					div.menu-btn
-		.header-user-info
-			.header-user-holder
-				+userBlock("Личный сайт веб разработчика", "Махиборода Екатерина")
-				svg.left-corner(viewbox="0 0 1000 360")
-					use(xlink:href="#icon-about_bg_left")
-				svg.right-corner(viewbox="0 0 1000 360")
-					use(xlink:href="#icon-about_bg_right")
+	.header-holder
+		nav#page-menu
+			+MainMenu(3)
+		header.header
+			+parallaxBG
+			.header-top
+				.menu-holder
+					+socialsBlock
+					button.toogle-menu
+						div.menu-btn
+			.login-block-holder
+				.header-user-info
+					.header-user-holder
+						svg.svg-main__img
+							use(xlink:href="#icon-portfolio_header")
+						+userBlock("Личный сайт веб разработчика", "Махиборода Екатерина")
+			svg.left-corner(viewbox="0 0 1000 360")
+				use(xlink:href="#icon-about_bg_left")
+			svg.right-corner(viewbox="0 0 1000 360")
+				use(xlink:href="#icon-about_bg_right")
 			.header-btn
-				button.bottom(class="fa fa-chevron-down")
-	section.about-me
+				a(href="#about").bottom(class="fa fa-chevron-down")
+	section.about-me(id="about")
 		.about-me-wrapper
 			.left-column
 				+title-svg("Обо мне", "about_header")
@@ -82,4 +87,5 @@ body
 						span
 							i(class="fa fa-map-marker")
 						| Cyprus, Limassol
-		include common/_footer
+		footer.footer
+			include common/_footer

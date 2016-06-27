@@ -1,18 +1,18 @@
 .login-page{
-  background-image: url("../images/forest-bg.jpg");
-  background-size: cover;
   width: 100%;
   height: 100%;
   display: table;
   color: $white;
 }
-
 /*************************************
       HEADER
 *************************************/
 .login-header{
   @extend %tableRow;
   text-align: right;
+    @include mobile{
+      text-align: center;
+    }
     .login-button{
       border: 1px solid #fff;
       font-weight: 500;
@@ -22,12 +22,17 @@
       padding: 12px 27px;
       margin: 20px 22px 0 0;
       transition: all .3s;
+      position: relative;
         &:hover{
           border-color: #729e19;
           background: #4e8839;
         }
         .flip &{
           visibility: hidden;
+        }
+        @include mobile{
+          margin: 10px 0 0 0;
+          padding: 12px 20px;
         }
     }
 }
@@ -37,73 +42,89 @@
 .login-block-holder{
   @extend %tableRow;
   height: 100%;
-    .login-card-wrapper{
-      max-width: 380px;
-      margin: 0 auto 20px;
-      position: relative;
-      text-align: center;
-      z-index: 100;
+}
+.login-card-table{
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.login-card-align{
+  display: table-cell;
+  vertical-align: middle;
+}
+.login-card-wrapper{
+  max-width: 380px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  z-index: 100;
+    @include tablet{
+      width: 348px;
     }
-    .login-card-flip{
-      perspective: 1000px;
-        .flip &{
-          perspective: none;
-        }
+    @include mobile{
+      width: 300px;
+      margin: 0 auto;
     }
-    .login-card__front,
-    .login-card__back{
-      background: rgba(#122620, 0.6);
-      border-radius: 6px;
-      padding: 42px 0 0;
-       -webkit-transition: -webkit-transform .5s;
-      transition: transform .5s;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      width: 100%;
+}
+.login-card-flip{
+  perspective: 1000px;
+    .flip &{
+      perspective: none;
     }
-    .login-card__front{
-      -webkit-transform: rotateY(0);
-      transform: rotateY(0);
-        .flip &{
-          -webkit-transform: rotateY(-180deg);
-          transform: rotateY(-180deg);
-        }
-    }
-    .login-card__back{
-      position: absolute;
-      z-index: 1;
-      top: 0;
+}
+.login-card__front,
+.login-card__back{
+  background: rgba(#122620, 0.6);
+  border-radius: 6px;
+  padding: 42px 0 0;
+   -webkit-transition: -webkit-transform .5s;
+  transition: transform .5s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  width: 100%;
+}
+.login-card__front{
+  -webkit-transform: rotateY(0);
+  transform: rotateY(0);
+    .flip &{
       -webkit-transform: rotateY(-180deg);
       transform: rotateY(-180deg);
-        .flip &{
-          -webkit-transform: rotateY(0);
-          transform: rotateY(0);
-        }
-        .user-pages__item{
-          width: 50%;
-          .user-pages__link{
-            width: 100%;
-          }
-        }
     }
-    .login-card__title{
-      font-family: $Sansus;
-      font-size: 35px;
-      text-transform: uppercase;
-      position: relative;
-      margin: 0;
-      padding: 0 0 23px;
-        &:after{
-          content: '';
-          height: 3px;
-          width: 89px;
-          background: #fff;
-          position: absolute;
-          left: 0;
-          right: 0;
-          margin: 0 auto;
-          bottom: 0;
-        }
+}
+.login-card__back{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+    .flip &{
+      -webkit-transform: rotateY(0);
+      transform: rotateY(0);
+    }
+    .user-pages__item{
+      width: 50%;
+      .user-pages__link{
+        width: 100%;
+      }
+    }
+}
+.login-card__title{
+  font-family: $Sansus;
+  font-size: rem(35px);
+  text-transform: uppercase;
+  position: relative;
+  margin: 0;
+  padding: 0 0 23px;
+    &:after{
+      content: '';
+      height: 3px;
+      width: 89px;
+      background: #fff;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      bottom: 0;
     }
 }
 .flip{
@@ -234,10 +255,8 @@
           display: block;
           color: $white;
           padding: 13px 0;
+          font-size: 16px;
         }
-    }
-    @include desktop{
-      background: red;
     }
 }
 /*************************************
@@ -248,15 +267,22 @@
   text-align: center;
     .footer-wrapper{
       padding: 0 0 40px;
-        span{
+      position: relative;
+        .copy{
+          border-right: 1px solid #fff;
+          margin: 0 5px 0 0;
+          padding: 0 5px 0 0;
+              @include mobile{
+                display: block;
+                padding: 0 0 7px;
+                margin: 0;
+                border: 0;
+              }
+        }
+        .year{
           border-left: 1px solid #fff;
           margin: 0 0 0 5px;
           padding: 0 0 0 5px;
-            &:first-child{
-              border: 0;
-              margin: 0;
-              padding: 0;
-            }
         }
     }
 }

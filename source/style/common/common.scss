@@ -39,11 +39,6 @@ $Sansus: 'sansus_webissimoregular', Arial, serif;
 		@content;
 	}
 }
-@mixin notebook(){
-	@media screen and (max-width:768px){
-		@content;
-	}
-}
 @mixin tablet(){
 	@media screen and (max-width:768px){
 		@content;
@@ -67,6 +62,9 @@ html{
 	line-height: 1.125;
 	font-family: $Roboto;
 	font-weight: 400;
+    @include mobile{
+      font-size: 14px;
+    }
 }
 ul{
   margin: 0;
@@ -83,6 +81,25 @@ button{
 }
 a{
 	text-decoration: none;
+}
+.parallax-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-width: 1200px;
+    img{
+      display: block;
+      max-width: 100%;
+      height: 100%;
+    }
+}
+.header-holder{
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+  display: table;
 }
 /*************************************
       SOCIALS
@@ -109,6 +126,8 @@ a{
 .user-block{
   text-align: center;
   color: $white;
+  position: relative;
+  z-index: 10;
     .user__avatar{
       width: 141px;
       height: 141px;
@@ -131,13 +150,17 @@ a{
     }
 }
 .header{
-  background-image: url("../images/forest-bg.jpg");
-    background-size: cover;
     min-height: 650px;
     display: table;
     height: 100%;
     width: 100%;
     position: relative;
+      @include tablet{
+        height: 547px;
+      }
+      @include mobile{
+        height: 600px;
+      }
   .social-links{
     float: left;
     .social__link{
@@ -146,6 +169,9 @@ a{
         color: $green;
       }
     }
+    .fa-linkedin{
+      display: none;
+    }
   }
   .header-top{
     @extend %tableRow;
@@ -153,9 +179,16 @@ a{
   .menu-holder{
     padding: 33px 28px 0 28px;
     box-sizing: border-box; 
+    position: relative;
+    overflow: hidden;
+
+    @include mobile{
+      padding: 11px 28px 0 0px;
+    }
   }
   .header-user-info{
-    @extend %tableRow;
+    display: table;
+    width: 100%;
     height: 100%;
     .user__name{
       font-size: 35px;
@@ -183,10 +216,15 @@ a{
     position: absolute;
     width: 100%;
     height: 210px;
-    bottom: -107px;
+    bottom: -67px;
     left: 0;
     right: 0;
     fill: #faf8f0;
+
+    @include mobile{
+      height: 79px;
+      bottom: 52px;
+    }
   }
 /*************************************
       TOOGLE MENU
@@ -198,6 +236,16 @@ a{
   padding: 0;
   position: relative;
   z-index: 2;
+    .open-menu &{
+      position: fixed;
+      top: 33px;
+      right: 28px;
+    }
+
+  @include mobile{
+    width: 26px;
+    height: 23px;
+  }
   .menu-btn{
     display: inline-block;
     position: relative;
@@ -206,6 +254,10 @@ a{
     background: #fff;
     border-radius: 5px;
     transition: all 0.3s;
+    vertical-align: middle;
+      @include mobile{
+        height: 4px;
+      }
     &:before,
     &:after{
       content: '';
@@ -216,12 +268,21 @@ a{
       position: absolute;
       transition: 0.3s;
       left: 0;
+        @include mobile{
+          height: 4px;
+        }
     }
     &:before{
       top: 16px;
+       @include mobile{
+          top: 8px;
+        }
     }
     &:after{
       top: -16px;
+      @include mobile{
+          top: -12px;
+        }
     }
     .open-menu &{
       background: transparent;
@@ -248,9 +309,10 @@ a{
 #page-menu{
   display: table;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   min-height: 650px;
-  position: absolute;
+  position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   bottom: 0;
@@ -287,7 +349,11 @@ a{
     .main-menu__item{
       position: relative;
       z-index: 10;
-      margin: 0 0 62px;
+      margin: 62px 0 0;
+
+        &:first-child{
+          margin: 0;
+        }
     }
     .main-menu__link{
       color: #fff;
@@ -325,21 +391,31 @@ a{
 .svg-title{
   position: relative;
   text-align: center;
-  padding: 57px 0 54px;
+  padding: 15px 0 54px;
+    @include tablet{
+      padding: 0 0 43px;
+    }
 }
 .svg-title-holder{
   margin: 0 auto;
   width: 380px;
 }
 .svg-title__text{
-  font-size: 63px;
+  font-size: rem(63px);
   font-family: $Sansus;
   text-transform: uppercase;
   color: #373e42;
   position: relative;
+  font-weight: normal;
   margin: 0;
     &:after{
       @include titleBorder();
+        @include tablet{
+          bottom: -14px;
+        }
+    }
+    @include tablet{
+      font-size: 47px;
     }
 }
 .svg-title__img {
@@ -350,10 +426,33 @@ a{
     left: 50%;
     width: 100%;
     height: auto;
-    -webkit-transform: translate(-50%,-55%);
-    -ms-transform: translate(-50%,-55%);
-    transform: translate(-50%,-55%);
+    -webkit-transform: translate(-50%,-66%);
+    -ms-transform: translate(-50%,-66%);
+    transform: translate(-50%, -66%);
     opacity: .1;
+      @include tablet{
+        height: 130px;
+        transform: translate(-50%, -79%);
+      }
+}
+.svg-main__img{
+  position: absolute;
+  fill: #fff;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 1176px;
+  -webkit-transform: translate(-50%,-55%);
+  -ms-transform: translate(-50%,-55%);
+  transform: translate(-50%,-55%);
+  height: 300px;
+  opacity: .12;
+    @include desktop{
+      width: 768px;
+    }
+    @include tablet{
+      width: 480px;
+    }
 }
 /*************************************
       TITLE BORDER
@@ -376,7 +475,14 @@ a{
   background: rgba(#373e42, 0.85);
   width: 100%;
   overflow: hidden;
-  padding: 26px 0 20px 0;
+  padding: 26px 0 31px 0;
+
+  @include tablet{
+    padding: 26px 0 21px 0;
+  }
+    .social-links{
+      padding: 0 0 20px;
+    }
   p{
     margin: 0;
     color: $white;
@@ -389,6 +495,18 @@ a{
     padding: 0 30px;
     box-sizing: border-box;
     position: relative;
+
+    @include tablet{
+      padding: 0 19px;
+    }
+
+      @include tablet{
+        width: 50%;
+        &:last-of-type{
+          width: 100%;
+          padding-top: 19px;
+        }
+      }
       &:before{
         content: '';
         position: absolute;
@@ -403,7 +521,7 @@ a{
       }
   }
   .footer-menu{
-    padding: 0 0 43px;
+    padding: 0 0 25px;
   }
   .footer-menu__item{
     display: inline-block;
@@ -457,6 +575,10 @@ a{
 .footer-up-btn{
   text-align: center;
   padding: 66px 0;
+
+  @include tablet{
+    padding: 44px 0;
+  }
     .up{
       color: rgba(#fff, 0.7);
       font-size: 28px;
