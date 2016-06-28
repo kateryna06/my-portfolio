@@ -3,11 +3,12 @@ $(document).ready(function () {
 	openMenu();
 	scrollUp();
 	scrollDown();
-	blogSidebar();
 	googleMap();
-
+	sidebarBlog();
 })
-
+$(window).resize(function(){
+	sidebarBlog();
+})
 function flipCard(){
 	$('.login-button').click(function(){
 	    $('body').addClass('flip');
@@ -47,11 +48,20 @@ function scrollDown(){
 	    }
 	});
 }
-function blogSidebar(){
-	$(document).on("scroll", onScroll);
-    //smoothscroll
+function sidebarBlog(){
+	
+	$(window).scroll(function(){
+        var window_top = $(window).scrollTop() + 12; // the "12" should equal the margin-top value for nav.stick
+        var div_top = $('#nav-anchor').offset().top;
+            if (window_top > div_top) {
+                $('.blog-sidebar nav').addClass('stick');
+            } else {
+                $('.blog-sidebar nav').removeClass('stick');
+            }
+    });
+
     $('.blog-sidebar a[href^="#"]').on('click', function (e) {
-        e.preventDefault();
+    	e.preventDefault();
         $(document).off("scroll");
         
         $('a').each(function () {
@@ -61,34 +71,55 @@ function blogSidebar(){
       
         var target = this.hash,
             menu = target;
-	        $target = $(target);
-	        $('html, body').stop().animate({
-	            'scrollTop': $target.offset().top+2
-	        }, 500, 'swing', function () {
-	            window.location.hash = target;
-	            $(document).on("scroll", onScroll);
-	        });
+		$target = $(target);
+       $('html, body').stop().animate({
+            'scrollTop': $target.offset().top+2
+        }, 600, 'swing', function () {
+            window.location.hash = target;
+            $(document).on("scroll");
+        });
     });
-}
-function onScroll(event){
-    var scrollPos = $(document).scrollTop();
-    $('.blog-sidebar li').each(function () {
-        var currLink = $(this);
-        var refElement = $(currLink.attr("href"));
-        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-            $('.blog-sidebar li').removeClass("active");
-            currLink.addClass("active");
+     var aChildren = $(".blog-sidebar nav li").children(); // find the a children of the list items
+    var aArray = []; // create the empty aArray
+    for (var i=0; i < aChildren.length; i++) {    
+        var aChild = aChildren[i];
+        var ahref = $(aChild).attr('href');
+        aArray.push(ahref);
+    } // this for loop fills the aArray with attribute href values
+
+    $(window).scroll(function(){
+        var windowPos = $(window).scrollTop(); // get the offset of the window from the top of page
+        var windowHeight = $(window).height(); // get the height of the window
+        var docHeight = $(document).height();
+
+        for (var i=0; i < aArray.length; i++) {
+            var theID = aArray[i];
+            var divPos = $(theID).offset().top; // get the offset of the div from the top of page
+            var divHeight = $(theID).height(); // get the height of the div in question
+            if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
+                $("a[href='" + theID + "']").addClass("active");
+            } else {
+                $("a[href='" + theID + "']").removeClass("active");
+            }
         }
-        else{
-            currLink.removeClass("active");
-       }
+
+        if(windowPos + windowHeight == docHeight) {
+            if (!$("nav li:last-child a").hasClass("active")) {
+                var navActiveCurrent = $(".active").attr("href");
+                $("a[href='" + navActiveCurrent + "']").removeClass("active");
+                $("nav li:last-child a").addClass("active");
+            }
+        }
     });
+    if($(window).width() <=768){
+		$(document).on('click', ".toogle-sidebar", function() {
+			$('body').addClass('open-sidebar');
+		});
+		$(document).on('click', ".open-sidebar .toogle-sidebar", function() {
+			$('body').removeClass('open-sidebar');
+		});
+	}
 }
-
-
-
-
-
 function googleMap() {
 	// body...
 
@@ -216,8 +247,8 @@ function googleMap() {
 }
 
 $(window).scroll(function() {
-	parallaxBG();
-	scrollSidebar();
+	//parallaxBG();
+	//scrollSidebar();
 
 });
 function parallaxBG(){

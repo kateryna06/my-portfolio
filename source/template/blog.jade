@@ -17,21 +17,20 @@ body.blog-page
 								.user__avatar
 									img(src="source/images/avatar.jpg", title=title, alt=name)
 							h3.title-border Блог
-							p Статьи, которые я написал
+							p Статьи, которые я написала
 				svg(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 2032 360" preserveaspectratio="none" class="triangle")
 					polygon(points="2032,360.368 2032,0 1016,173 0,0 0,360.368")
-	.fixed
-		.blog-container
-			.blog-sidebar
-			.blog-content
-	section.blog-container(class="static")
+	
+	section.blog-container
 		aside.blog-sidebar
-			.blog-menu__wrapper
+			button.toogle-sidebar
+			#nav-anchor
+			nav
 				ul.post-list
 					li.post-list-item
 						a.post-item__url(href="#sass") Самое важное в SASS
 					li.post-list-item
-						a.post-item__url(href="#markup") Самое важное в SASS
+						a.post-item__url(href="#markup") Приёмы в вёрстке
 					li.post-list-item
 						a.post-item__url(href="#news") Новости
 		div.blog-content
